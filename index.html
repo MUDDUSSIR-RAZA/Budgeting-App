@@ -10,26 +10,170 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="./app.js" defer></script>
 </head>
 
 <body>
     <header>
         BUDGETING APP
     </header>
-    
-    
+
     <nav class="navbar">
         <div class="logo"><img src="./pics/budget.webp" alt="Logo"></div>
         <ul class="nav-links">
-            <li><a href="#">Budget</a></li>
-            <li><a href="#">Expenses</a></li>
+            <li><a onclick="showBudget()">Budget</a></li>
+            <li><a onclick="showExpensesList()">Expenses</a></li>
         </ul>
     </nav>
 
-    <main>
+    <main class="center">
+        <div class="container">
 
+            <div class="budget">
+                <form class="budgetForm">
+                    <label class="budgetInput">
+                        <p>Budget Amount</p>
+                        <input type="text" placeholder="Enter your budget amount" id="budgetAmount">
+                        <p id="budgetError" class="hide error">Input error</p>
+                    </label>
+                </form>
+                <button class="budgetbtn" onclick="setBudget()">Set budget</button>
+            </div>
 
+            <div class="expensesAdd">
+                <div onclick="showExpensesList()" class="x">
+                    X
+                </div>
+
+                <form class="expensesForm">
+
+                    <label>
+                        <p>Payment</p>
+                        <input type="number" placeholder="Enter Payment" id="paymentAmount">
+                        <p id="paymentError" class="error hide">Payment missing: <br> The payment information is required for further
+                            processing.</p>
+                    </label>
+
+                    </label>
+                    <p>Enter Category</p>
+                    <input type="text" placeholder="Category Name" required maxlength="25" id="categoryName">
+                    <p id="categoryError" class="error hide">Please enter a valid input. <br> This field cannot be left blank.</p>
+                    </label>
+
+                    <label class="expensesInput">
+                        <p>Description</p>
+                        <textarea name="optional" id="description"> </textarea>
+                    </label>
+
+                    <label class="expensesInput">
+                        <p>Enter Payment Date</p>
+                        <input type="date" placeholder="Payment Date" id="paymentDate">
+                        <p id="dateError" class="error hide">Date not specified: <br> Kindly provide a valid date.</p>
+                    </label>
+                </form>
+                <button onclick="addExpense()" class="expensesbtn">Add Expense</button>
+
+            </div>
+
+            <div class="expensesListHeadings">
+                <table>
+                    <tr class="headings">
+                        <th id="category">
+                            CATEGORY
+                        </th>
+                        <th id="date">
+                            DATE
+                        </th>
+                        <th id="payment">
+                            PAYMENT
+                        </th>
+                    </tr>
+                </table>
+
+                <div class="expensesList">
+
+                    <!-- <table class="color">
+                        <tr>
+                            <td id="category">
+                                Food
+                            </td>
+                            <td id="date">
+                                12/ 05/ 2023
+                            </td>
+                            <td id="payment" class="f">
+                                Rs 5000
+                                <button class="see"><i class="fa-sharp fa-solid fa-eye"></i></button>
+                                <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                            </td>
+                        </tr>
+                    </table> -->
+                </div>
+
+                <div class="buttons">
+                    <button>Add Expense</button>
+                    <button>Delete All Expenses</button>
+                </div>
+            </div>
+
+            <div id="editExpense" class="expensesAdd">
+                <div onclick="showExpensesList()" class="x">
+                    X
+                </div>
+
+                <form class="expensesForm" action="expensesbtn">
+
+                    <label>
+                        <p>Payment Date</p>
+                        <input type="number" placeholder="Enter Payment Date" required>
+                    </label>
+
+                    </label>
+                    <p>Enter Category</p>
+                    <input type="text" placeholder="Category Name" required maxlength="25">
+                    </label>
+
+                    <label class="expensesInput">
+                        <p>Description</p>
+                        <textarea name="description">
+                        </textarea>
+                    </label>
+
+                    <label class="expensesInput">
+                        <p>Enter Payment Date</p>
+                        <input type="date" placeholder="Payment Date" required>
+                    </label>
+                    <button class="expensesbtn">Edit Expense</button>
+                </form>
+            </div>
     </main>
+
+    <div class="overview">
+        <div class="total">Total Budget
+            <div id="totalBudget">
+                0
+            </div>
+        </div>
+        <div class="expense">Expenses
+            <div id="totalExpense">
+                0
+            </div>
+            <div class="expenseLine">
+                <div class="fillExpense">
+
+                </div>
+            </div>
+        </div>
+        <div class="balance">Balance
+            <div id="balanceAmount">
+                0
+            </div>
+            <div class="balanceLine">
+
+            </div>
+        </div>
+    </div>
 
     <footer>
         MR Developer
