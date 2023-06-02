@@ -51,14 +51,16 @@
                     <label>
                         <p>Payment</p>
                         <input type="number" placeholder="Enter Payment" id="paymentAmount">
-                        <p id="paymentError" class="error hide">Payment missing: <br> The payment information is required for further
+                        <p id="paymentError" class="error hide">Payment missing: <br> The payment information is
+                            required for further
                             processing.</p>
                     </label>
 
                     </label>
                     <p>Enter Category</p>
                     <input type="text" placeholder="Category Name" required maxlength="25" id="categoryName">
-                    <p id="categoryError" class="error hide">Please enter a valid input. <br> This field cannot be left blank.</p>
+                    <p id="categoryError" class="error hide">Please enter a valid input. <br> This field cannot be left
+                        blank.</p>
                     </label>
 
                     <label class="expensesInput">
@@ -106,30 +108,35 @@
                     X
                 </div>
 
-                <form class="expensesForm" action="expensesbtn">
+                <form class="expensesForm">
 
                     <label>
-                        <p>Payment Date</p>
-                        <input type="number" placeholder="Enter Payment Date" required>
+                        <p>Payment</p>
+                        <input type="number" placeholder="Enter Payment" id="editPaymentAmount">
+                        <p id="paymentError" class="error hide">Payment missing: <br> The payment information is
+                            required for further
+                            processing.</p>
                     </label>
 
                     </label>
                     <p>Enter Category</p>
-                    <input type="text" placeholder="Category Name" required maxlength="25">
+                    <input type="text" placeholder="Category Name" required maxlength="25" id="editCategoryName">
+                    <p id="categoryError" class="error hide">Please enter a valid input. <br> This field cannot be left
+                        blank.</p>
                     </label>
 
                     <label class="expensesInput">
                         <p>Description</p>
-                        <textarea name="description">
-                        </textarea>
+                        <textarea name="optional" id="editDescription"> </textarea>
                     </label>
 
                     <label class="expensesInput">
                         <p>Enter Payment Date</p>
-                        <input type="date" placeholder="Payment Date" required>
+                        <input type="date" placeholder="Payment Date" id="editPaymentDate">
+                        <p id="dateError" class="error hide">Date not specified: <br> Kindly provide a valid date.</p>
                     </label>
-                    <button class="expensesbtn">Edit Expense</button>
                 </form>
+                <button class="expensesbtn" id="editButton">Edit Expense</button>
             </div>
     </main>
 
