@@ -17,6 +17,10 @@ let expensesList = document.querySelector(".expensesList");
 let paymentError = document.querySelector("#paymentError");
 let categoryError = document.querySelector("#categoryError");
 let dateError = document.querySelector("#dateError");
+let editPaymentAmount = document.querySelector("#editPaymentAmount");
+let editCategoryName = document.querySelector("#editCategoryName");
+let editDescription = document.querySelector("#editDescription");
+let editPaymentDate = document.querySelector("#editPaymentDate");
 const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 
 let expensesArray = [];
@@ -44,6 +48,13 @@ let showExpensesAdd = () => {
     editExpenseDiv.style.display = "none";
 }
 
+let showExpensesEdit = () => {
+    budgetdiv.style.display = "none";
+    expensesAddDiv.style.display = "none";
+    expensesListDiv.style.display = "none";
+    editExpenseDiv.style.display = "block";
+}
+
 let deleteAll = () => {
     expensesArray = [];
     displayExpenses();
@@ -57,6 +68,29 @@ let deleteTable = (indexToDelete) => {
     refreshBalance();
 }
 
+let replaceObject = (obj, index) => {
+    obj.payment = editPaymentAmount.value;
+    obj.category = editCategoryName.value;
+    obj.description = editDescription.value;
+    obj.paymentDate = editPaymentDate.value;
+    expensesArray[index] = obj;
+    refreshBalance();
+    displayExpenses();
+    showExpensesList();
+}
+
+let editTable = (obj, index) => {
+    showExpensesEdit();
+    editPaymentAmount.value = obj.payment;
+    editCategoryName.value = obj.category;
+    editDescription.value = obj.description;
+    editPaymentDate.value = obj.paymentDate;
+    let editButton = document.querySelector("#editButton");
+    editButton.addEventListener("click", () => {
+         replaceObject(obj, index);
+    });
+}
+
 let setBudget = () => {
     if (budgetAmount.value < 0 || !budgetAmount.value || !numberRegex.test(budgetAmount.value)) {
         budgetError.classList.remove("hide");
@@ -68,9 +102,9 @@ let setBudget = () => {
         totalBudgetAmount = 0;
         totalBudgetAmount = +budgetAmount.value;
         budgetAmount.value = "";
-        totalBudget.innerText = totalBudgetAmount;
+        totalBudget.innerText = `Rs ${totalBudgetAmount}`;
         balanceAmount.innerText = "";
-        balanceAmount.innerText = totalBudgetAmount - totalExpenseValue;
+        balanceAmount.innerText = `Rs ${totalBudgetAmount - totalExpenseValue}`;
     }
 }
 
@@ -81,11 +115,11 @@ let refreshBalance = () => {
 
     })
     totalExpense.innerText = "";
-    totalExpense.innerText = totalExpenseValue;
+    totalExpense.innerText = `Rs ${totalExpenseValue}`;
     balanceAmount.innerText = "";
-    balanceAmount.innerText = totalBudgetAmount - totalExpenseValue;
-    let percentage = (totalExpenseValue /totalBudgetAmount)*100;
-    if (balanceAmount.innerText < 0 ) {
+    balanceAmount.innerText = `Rs ${totalBudgetAmount - totalExpenseValue}`;
+    let percentage = (totalExpenseValue / totalBudgetAmount) * 100;
+    if ((totalBudgetAmount - totalExpenseValue) <= 0) {
         alert("Budget emergency! Your funds have gone into negative territory. Take immediate and drastic measures to rectify your financial situation.");
         balance.style.color = "red"
     } else if (percentage > 80 && percentage < 100) {
@@ -123,7 +157,7 @@ let displayExpenses = () => {
 
         tdCategory.innerText = object.category;
         tddate.innerText = object.paymentDate;
-        tdPayment.innerText = object.payment;
+        tdPayment.innerText = `Rs ${object.payment}`;
 
         let seebtn = document.createElement("button");
         let editbtn = document.createElement("button");
@@ -137,6 +171,7 @@ let displayExpenses = () => {
         editbtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
         deletebtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
 
+        editbtn.addEventListener("click", () => editTable(object, index))
         deletebtn.addEventListener("click", () => deleteTable(index))
 
         tdPayment.appendChild(seebtn)
