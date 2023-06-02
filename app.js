@@ -21,6 +21,7 @@ let editPaymentAmount = document.querySelector("#editPaymentAmount");
 let editCategoryName = document.querySelector("#editCategoryName");
 let editDescription = document.querySelector("#editDescription");
 let editPaymentDate = document.querySelector("#editPaymentDate");
+let seeDiv = document.querySelector(".seeDiv");
 const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 
 let expensesArray = [];
@@ -32,6 +33,7 @@ let showBudget = () => {
     expensesAddDiv.style.display = "none";
     expensesListDiv.style.display = "none";
     editExpenseDiv.style.display = "none";
+    seeDiv.style.display = "none";
 }
 
 let showExpensesList = () => {
@@ -39,6 +41,7 @@ let showExpensesList = () => {
     expensesAddDiv.style.display = "none";
     expensesListDiv.style.display = "block";
     editExpenseDiv.style.display = "none";
+    seeDiv.style.display = "none";
 }
 
 let showExpensesAdd = () => {
@@ -46,6 +49,7 @@ let showExpensesAdd = () => {
     expensesAddDiv.style.display = "block";
     expensesListDiv.style.display = "none";
     editExpenseDiv.style.display = "none";
+    seeDiv.style.display = "none";
 }
 
 let showExpensesEdit = () => {
@@ -53,6 +57,15 @@ let showExpensesEdit = () => {
     expensesAddDiv.style.display = "none";
     expensesListDiv.style.display = "none";
     editExpenseDiv.style.display = "block";
+    seeDiv.style.display = "none";
+}
+
+let showSeeDiv = () => {
+    budgetdiv.style.display = "none";
+    expensesAddDiv.style.display = "none";
+    expensesListDiv.style.display = "none";
+    editExpenseDiv.style.display = "none";
+    seeDiv.style.display = "block";
 }
 
 let deleteAll = () => {
