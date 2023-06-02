@@ -22,6 +22,8 @@ let editCategoryName = document.querySelector("#editCategoryName");
 let editDescription = document.querySelector("#editDescription");
 let editPaymentDate = document.querySelector("#editPaymentDate");
 let seeDiv = document.querySelector(".seeDiv");
+
+////////////////////////////Extra for Random color//////////////////////////////
 const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 
 let expensesArray = [];
