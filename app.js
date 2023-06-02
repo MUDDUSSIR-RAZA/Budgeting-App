@@ -6,6 +6,7 @@ let budgetError = document.querySelector("#budgetError");
 let paymentAmount = document.querySelector("#paymentAmount");
 let totalBudget = document.querySelector("#totalBudget");
 let balanceAmount = document.querySelector("#balanceAmount");
+let balance = document.querySelector(".balance");
 let totalExpense = document.querySelector("#totalExpense");
 let categoryName = document.querySelector("#categoryName");
 let description = document.querySelector("#description");
@@ -20,6 +21,7 @@ const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 
 let expensesArray = [];
 let totalExpenseValue = 0;
+let totalBudgetAmount = 0;
 
 let showBudget = () => {
     budgetdiv.style.display = "flex";
@@ -35,18 +37,62 @@ let showExpensesList = () => {
     editExpenseDiv.style.display = "none";
 }
 
+let showExpensesAdd = () => {
+    budgetdiv.style.display = "none";
+    expensesAddDiv.style.display = "block";
+    expensesListDiv.style.display = "none";
+    editExpenseDiv.style.display = "none";
+}
+
+let deleteAll = () => {
+    expensesArray = [];
+    displayExpenses();
+    refreshBalance();
+}
+
+let deleteTable = (indexToDelete) => {
+    expensesArray.splice(indexToDelete, 1);
+    console.log(expensesArray);
+    displayExpenses();
+    refreshBalance();
+}
+
 let setBudget = () => {
     if (budgetAmount.value < 0 || !budgetAmount.value || !numberRegex.test(budgetAmount.value)) {
         budgetError.classList.remove("hide");
     } else {
         totalExpense.value = totalExpenseValue;
         budgetError.classList.add("hide");
-        budgetdiv.style.display = "none";
-        expensesAddDiv.style.display = "flex";
+        showExpensesList();
         totalBudget.innerText = "";
-        totalBudget.innerText = +budgetAmount.value;
+        totalBudgetAmount = 0;
+        totalBudgetAmount = +budgetAmount.value;
+        budgetAmount.value = "";
+        totalBudget.innerText = totalBudgetAmount;
         balanceAmount.innerText = "";
-        balanceAmount.innerText = budgetAmount.value - totalExpenseValue;
+        balanceAmount.innerText = totalBudgetAmount - totalExpenseValue;
+    }
+}
+
+let refreshBalance = () => {
+    totalExpenseValue = 0;
+    expensesArray.forEach((object) => {
+        totalExpenseValue += +object.payment;
+
+    })
+    totalExpense.innerText = "";
+    totalExpense.innerText = totalExpenseValue;
+    balanceAmount.innerText = "";
+    balanceAmount.innerText = totalBudgetAmount - totalExpenseValue;
+    let percentage = (totalExpenseValue /totalBudgetAmount)*100;
+    if (balanceAmount.innerText < 0 ) {
+        alert("Attention! Your budget is running low. Take a moment to recharge and reorganize your finances.");
+        balance.style.color = "red"
+    } else if (percentage > 80 && percentage < 100) {
+        balance.style.color = "yellow"
+    } else {
+        balance.style.color = "green"
+        
     }
 }
 
@@ -62,8 +108,7 @@ let makeobject = (expenseAmount, categoryValue, descriptionValue, paymentDateVal
 
 let displayExpenses = () => {
     expensesList.innerHTML = "";
-    expensesArray.forEach((object) => {
-        console.log(object);
+    expensesArray.forEach((object, index) => {
         let table = document.createElement("table");
 
         let tr = document.createElement("tr");
@@ -91,6 +136,8 @@ let displayExpenses = () => {
         seebtn.innerHTML = `<i class="fa-sharp fa-solid fa-eye"></i>`;
         editbtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
         deletebtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
+
+        deletebtn.addEventListener("click", () => deleteTable(index))
 
         tdPayment.appendChild(seebtn)
         tdPayment.appendChild(editbtn)
@@ -135,16 +182,13 @@ let addExpense = () => {
         categoryError.classList.add("hide")
         dateError.classList.add("hide")
 
-        totalExpenseValue += +expenseAmount;
-        totalExpense.innerText = "";
-        totalExpense.innerText = totalExpenseValue;
-        balanceAmount.innerText = "";
-        balanceAmount.innerText = budgetAmount.value - totalExpenseValue;
         makeobject(expenseAmount, categoryValue, descriptionValue, paymentDateValue);
+        refreshBalance();
         displayExpenses();
-        paymentAmount.value = "";
-        categoryName.value = "";
-        description.value = "";
-        paymentDate.value = "";
+        // paymentAmount.value = "";
+        // categoryName.value = "";
+        // description.value = "";
+        // paymentDate.value = "";
+        showExpensesList();
     }
 }
