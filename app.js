@@ -66,6 +66,7 @@ let showSeeDiv = () => {
     expensesListDiv.style.display = "none";
     editExpenseDiv.style.display = "none";
     seeDiv.style.display = "block";
+    seeDiv.style.display = "block";
 }
 
 let deleteAll = () => {
@@ -79,6 +80,22 @@ let deleteTable = (indexToDelete) => {
     console.log(expensesArray);
     displayExpenses();
     refreshBalance();
+}
+
+let seeTable = (obj) => {
+    showSeeDiv();
+    seeCategory.innerText = "";
+    seeDescriiption.innerText = "";
+    seePayment.innerText = "";
+    seePaymentDate.innerText = "";
+    let seeCategory = document.querySelector("#seeCategory");
+    let seeDescriiption = document.querySelector("#seeDescriiption");
+    let seePayment = document.querySelector("#seePayment");
+    let seePaymentDate = document.querySelector("#seePaymentDate");
+    seeCategory.innerText = obj.category;
+    seeDescriiption.innerText = obj.description;
+    seePayment.innerText = obj.payment;
+    seePaymentDate.innerText = obj.paymentDate;
 }
 
 let replaceObject = (obj, index) => {
@@ -100,7 +117,7 @@ let editTable = (obj, index) => {
     editPaymentDate.value = obj.paymentDate;
     let editButton = document.querySelector("#editButton");
     editButton.addEventListener("click", () => {
-         replaceObject(obj, index);
+        replaceObject(obj, index);
     });
 }
 
@@ -184,6 +201,7 @@ let displayExpenses = () => {
         editbtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
         deletebtn.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
 
+        seebtn.addEventListener("click", () => seeTable(object))
         editbtn.addEventListener("click", () => editTable(object, index))
         deletebtn.addEventListener("click", () => deleteTable(index))
 
