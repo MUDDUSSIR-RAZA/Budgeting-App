@@ -84,18 +84,19 @@ let deleteTable = (indexToDelete) => {
 
 let seeTable = (obj) => {
     showSeeDiv();
-    seeCategory.innerText = "";
-    seeDescriiption.innerText = "";
-    seePayment.innerText = "";
-    seePaymentDate.innerText = "";
     let seeCategory = document.querySelector("#seeCategory");
     let seeDescriiption = document.querySelector("#seeDescriiption");
     let seePayment = document.querySelector("#seePayment");
     let seePaymentDate = document.querySelector("#seePaymentDate");
+    seeCategory.innerText = "";
+    seeDescriiption.innerText = "";
+    seePayment.innerText = "";
+    seePaymentDate.innerText = "";
     seeCategory.innerText = obj.category;
     seeDescriiption.innerText = obj.description;
     seePayment.innerText = obj.payment;
     seePaymentDate.innerText = obj.paymentDate;
+    console.log(obj);
 }
 
 let replaceObject = (obj, index) => {
@@ -251,10 +252,10 @@ let addExpense = () => {
         makeobject(expenseAmount, categoryValue, descriptionValue, paymentDateValue);
         refreshBalance();
         displayExpenses();
-        // paymentAmount.value = "";
-        // categoryName.value = "";
-        // description.value = "";
-        // paymentDate.value = "";
+        paymentAmount.value = "";
+        categoryName.value = "";
+        description.value = "";
+        paymentDate.value = "";
         showExpensesList();
     }
 }
