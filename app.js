@@ -86,13 +86,13 @@ let refreshBalance = () => {
     balanceAmount.innerText = totalBudgetAmount - totalExpenseValue;
     let percentage = (totalExpenseValue /totalBudgetAmount)*100;
     if (balanceAmount.innerText < 0 ) {
-        alert("Attention! Your budget is running low. Take a moment to recharge and reorganize your finances.");
+        alert("Budget emergency! Your funds have gone into negative territory. Take immediate and drastic measures to rectify your financial situation.");
         balance.style.color = "red"
     } else if (percentage > 80 && percentage < 100) {
         balance.style.color = "yellow"
+        alert("Budget alarm! Your funds are running critically low or have dropped below 20%. Take immediate action to address your financial situation.");
     } else {
         balance.style.color = "green"
-        
     }
 }
 
