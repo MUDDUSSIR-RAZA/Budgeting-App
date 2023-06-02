@@ -29,6 +29,11 @@ const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 let expensesArray = [];
 let totalExpenseValue = 0;
 let totalBudgetAmount = 0;
+let currentObjEdit = "";
+let currentIndexEdit = "";
+
+let editButton = document.querySelector("#editButton");
+editButton.addEventListener("click",() => replaceObject(currentObjEdit, currentIndexEdit))
 
 let showBudget = () => {
     budgetdiv.style.display = "flex";
@@ -79,7 +84,6 @@ let deleteAll = () => {
 
 let deleteTable = (indexToDelete) => {
     expensesArray.splice(indexToDelete, 1);
-    console.log(expensesArray);
     displayExpenses();
     refreshBalance();
 }
@@ -98,7 +102,6 @@ let seeTable = (obj) => {
     seeDescriiption.innerText = obj.description;
     seePayment.innerText = obj.payment;
     seePaymentDate.innerText = obj.paymentDate;
-    console.log(obj);
 }
 
 let replaceObject = (obj, index) => {
@@ -114,14 +117,18 @@ let replaceObject = (obj, index) => {
 
 let editTable = (obj, index) => {
     showExpensesEdit();
+    editPaymentAmount.value = "";
+    editCategoryName.value = "";
+    editDescription.value = "";
+    editPaymentDate.value = "";
     editPaymentAmount.value = obj.payment;
     editCategoryName.value = obj.category;
     editDescription.value = obj.description;
     editPaymentDate.value = obj.paymentDate;
-    let editButton = document.querySelector("#editButton");
-    editButton.addEventListener("click", () => {
-        replaceObject(obj, index);
-    });
+    currentObjEdit = "";
+    currentIndexEdit = "";
+    currentObjEdit = obj;
+    currentIndexEdit = index;
 }
 
 let setBudget = () => {
