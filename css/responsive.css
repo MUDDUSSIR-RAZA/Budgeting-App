@@ -115,6 +115,7 @@
         width: calc(100vw - 65vw);
         font-size: 12px;
         font-weight: 400;
+        padding: 0px 2vw 0px 5vw;
     }
 
     .buttons button {
@@ -156,7 +157,8 @@
     #payment {
         width: calc(100vw - 67vw);
         font-size: 11px;
-    }
+        padding: 0px 2vw 0px 4vw;
+        }
 
     .buttons button {
         padding: 4px 2px 4px 2px;
