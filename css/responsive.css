@@ -92,7 +92,7 @@
 
     .budget {
         padding: 120px;
-        margin-top: 11vh;
+        margin-top: 10.4vh;
         
     }
     .total,
@@ -112,7 +112,7 @@
     }
 
     #payment {
-        width: calc(100vw - 65vw);
+        width: calc(100vw - 64vw);
         font-size: 12px;
         font-weight: 400;
         padding: 0px 2vw 0px 5vw;
@@ -155,7 +155,7 @@
     }
 
     #payment {
-        width: calc(100vw - 67vw);
+        width: calc(100vw - 65.5vw);
         font-size: 11px;
         padding: 0px 2vw 0px 4vw;
         }
