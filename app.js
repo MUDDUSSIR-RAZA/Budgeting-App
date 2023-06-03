@@ -170,7 +170,7 @@ let makeobject = (expenseAmount, categoryValue, descriptionValue, paymentDateVal
 }
 
 let displayExpenses = () => {
-let expensesList = document.querySelector(".expensesList");
+    let expensesList = document.querySelector(".expensesList");
     expensesList.innerHTML = "";
     expensesArray.forEach((object, index) => {
         let table = document.createElement("table");
@@ -184,6 +184,7 @@ let expensesList = document.querySelector(".expensesList");
         tdCategory.id = "category";
         tddate.id = "date";
         tdPayment.id = "payment";
+        tdPayment.classList = "flex";
 
         tdCategory.innerText = object.category;
         tddate.innerText = object.paymentDate;
@@ -205,9 +206,13 @@ let expensesList = document.querySelector(".expensesList");
         editbtn.addEventListener("click", () => editTable(object, index))
         deletebtn.addEventListener("click", () => deleteTable(index))
 
-        tdPayment.appendChild(seebtn)
-        tdPayment.appendChild(editbtn)
-        tdPayment.appendChild(deletebtn)
+        let div = document.createElement("div");
+        div.className = "listButtons";
+        tdPayment.appendChild(div)
+
+        div.appendChild(seebtn)
+        div.appendChild(editbtn)
+        div.appendChild(deletebtn)
 
         tr.appendChild(tdCategory);
         tr.appendChild(tddate);
@@ -233,9 +238,9 @@ let addExpense = () => {
     let categoryName = document.querySelector("#categoryName");
     let description = document.querySelector("#description");
     let paymentDate = document.querySelector("#paymentDate");
-let paymentError = document.querySelector("#paymentError");
-let categoryError = document.querySelector("#categoryError");
-let dateError = document.querySelector("#dateError");
+    let paymentError = document.querySelector("#paymentError");
+    let categoryError = document.querySelector("#categoryError");
+    let dateError = document.querySelector("#dateError");
     let expenseAmount = paymentAmount.value;
     let categoryValue = categoryName.value;
     let descriptionValue = description.value;
