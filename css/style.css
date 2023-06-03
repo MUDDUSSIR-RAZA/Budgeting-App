@@ -164,6 +164,7 @@ main {
   margin-top: 20vh;
   width: 15vw;
   height: 13vw;
+  display: none;
 }
 
 .budgetForm {
@@ -250,9 +251,9 @@ main {
   background: #bebebe;
 }
 
-.expensesListHeadings{
+/* .expensesListHeadings{
   display: none;
-}
+} */
 
 #category {
   text-align: center;
