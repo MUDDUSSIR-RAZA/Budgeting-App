@@ -139,7 +139,7 @@ main {
 
 .container {
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -164,7 +164,6 @@ main {
   margin-top: 20vh;
   width: 15vw;
   height: 13vw;
-  /* display: none; */
 }
 
 .budgetForm {
@@ -225,7 +224,6 @@ main {
   justify-content: flex-end;
   align-self: center;
   margin-bottom: 20px;
-  margin-right: -100px;
 }
 
 .expensesAdd input {
@@ -354,7 +352,7 @@ transition: all .3s;
   margin-top: 2vh;
   padding: 5vh;
   border-radius: 10px;
-  width: 22vw;
+  width: 27vw;
   display: none;
 }
 
