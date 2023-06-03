@@ -10,9 +10,12 @@
         height: 13vw;
     }
 
-    .total, .expense, .balance {
+    .total,
+    .expense,
+    .balance {
         font-size: 20px;
-      }
+    }
+
 }
 
 
@@ -26,9 +29,31 @@
         padding: 70px;
     }
 
-    .total, .expense, .balance {
+    .total,
+    .expense,
+    .balance {
         font-size: 18px;
-      }
+    }
+
+    #category {
+        width: 20vw;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 0 6px 0 6px;
+    }
+
+    #date {
+        padding-left: 0px;
+        width: 20vw;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    #payment {
+        width: calc(100vw - 60vw);
+        font-size: 15px;
+        font-weight: 500;
+    }
 }
 
 @media (max-width: 590px) {
@@ -49,10 +74,34 @@
 
     .budget {
         padding: 120px;
+        margin-top: 14vh;
     }
 
-    .total, .expense, .balance {
+    .total,
+    .expense,
+    .balance {
         font-size: 16px;
+    }
+
+    #category {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    #date {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    #payment {
+        width: calc(100vw - 65vw);
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .buttons button {
+        padding: 5px;
+        margin: 4px;
       }
 }
 
@@ -64,4 +113,22 @@
     .budget {
         padding: 110px;
     }
+
+    #category {
+        font-size: 11px;
+    }
+
+    #date {
+        font-size: 11px;
+    }
+
+    #payment {
+        width: calc(100vw - 67vw);
+        font-size: 11px;
+    }
+
+    .buttons button {
+        padding: 4px 2px 4px 2px;
+        margin: 7px;
+      }
 }
