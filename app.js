@@ -1,27 +1,13 @@
-let budgetAmount = document.querySelector("#budgetAmount");
 let budgetdiv = document.querySelector(".budget");
-let budgetbtn = document.querySelector(".budgetbtn");
-let expensesAddDiv = document.querySelector(".expensesAdd");
-let budgetError = document.querySelector("#budgetError");
-let paymentAmount = document.querySelector("#paymentAmount");
-let totalBudget = document.querySelector("#totalBudget");
-let balanceAmount = document.querySelector("#balanceAmount");
-let balance = document.querySelector(".balance");
-let totalExpense = document.querySelector("#totalExpense");
-let categoryName = document.querySelector("#categoryName");
-let description = document.querySelector("#description");
-let paymentDate = document.querySelector("#paymentDate");
-let expensesListDiv = document.querySelector(".expensesListHeadings");
 let editExpenseDiv = document.querySelector("#editExpense");
-let expensesList = document.querySelector(".expensesList");
-let paymentError = document.querySelector("#paymentError");
-let categoryError = document.querySelector("#categoryError");
-let dateError = document.querySelector("#dateError");
+let expensesListDiv = document.querySelector(".expensesListHeadings");
+let expensesAddDiv = document.querySelector(".expensesAdd");
+let seeDiv = document.querySelector(".seeDiv");
+let totalExpense = document.querySelector("#totalExpense");
 let editPaymentAmount = document.querySelector("#editPaymentAmount");
 let editCategoryName = document.querySelector("#editCategoryName");
 let editDescription = document.querySelector("#editDescription");
 let editPaymentDate = document.querySelector("#editPaymentDate");
-let seeDiv = document.querySelector(".seeDiv");
 
 ////////////////////////////Extra for Random color//////////////////////////////
 const numberRegex = /^[1-9]\d*(\.\d+)?$/;
@@ -33,7 +19,7 @@ let currentObjEdit = "";
 let currentIndexEdit = "";
 
 let editButton = document.querySelector("#editButton");
-editButton.addEventListener("click",() => replaceObject(currentObjEdit, currentIndexEdit))
+editButton.addEventListener("click", () => replaceObject(currentObjEdit, currentIndexEdit))
 
 let showBudget = () => {
     budgetdiv.style.display = "flex";
@@ -72,7 +58,6 @@ let showSeeDiv = () => {
     expensesAddDiv.style.display = "none";
     expensesListDiv.style.display = "none";
     editExpenseDiv.style.display = "none";
-    seeDiv.style.display = "block";
     seeDiv.style.display = "block";
 }
 
@@ -132,6 +117,9 @@ let editTable = (obj, index) => {
 }
 
 let setBudget = () => {
+    let totalBudget = document.querySelector("#totalBudget");
+    let budgetAmount = document.querySelector("#budgetAmount");
+    let budgetError = document.querySelector("#budgetError");
     if (budgetAmount.value < 0 || !budgetAmount.value || !numberRegex.test(budgetAmount.value)) {
         budgetError.classList.remove("hide");
     } else {
@@ -143,12 +131,13 @@ let setBudget = () => {
         totalBudgetAmount = +budgetAmount.value;
         budgetAmount.value = "";
         totalBudget.innerText = `Rs ${totalBudgetAmount}`;
-        balanceAmount.innerText = "";
-        balanceAmount.innerText = `Rs ${totalBudgetAmount - totalExpenseValue}`;
+        refreshBalance();
     }
 }
 
 let refreshBalance = () => {
+    let balanceAmount = document.querySelector("#balanceAmount");
+    let balance = document.querySelector(".balance");
     totalExpenseValue = 0;
     expensesArray.forEach((object) => {
         totalExpenseValue += +object.payment;
@@ -181,6 +170,7 @@ let makeobject = (expenseAmount, categoryValue, descriptionValue, paymentDateVal
 }
 
 let displayExpenses = () => {
+let expensesList = document.querySelector(".expensesList");
     expensesList.innerHTML = "";
     expensesArray.forEach((object, index) => {
         let table = document.createElement("table");
@@ -239,6 +229,13 @@ let displayExpenses = () => {
 }
 
 let addExpense = () => {
+    let paymentAmount = document.querySelector("#paymentAmount");
+    let categoryName = document.querySelector("#categoryName");
+    let description = document.querySelector("#description");
+    let paymentDate = document.querySelector("#paymentDate");
+let paymentError = document.querySelector("#paymentError");
+let categoryError = document.querySelector("#categoryError");
+let dateError = document.querySelector("#dateError");
     let expenseAmount = paymentAmount.value;
     let categoryValue = categoryName.value;
     let descriptionValue = description.value;
