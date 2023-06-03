@@ -216,7 +216,7 @@ main {
   box-shadow: 0px 5px 15px #bebebe, -2px -1px 15px #fff;
   ;
   border-radius: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .x {
@@ -251,9 +251,9 @@ main {
   background: #bebebe;
 }
 
-/* .expensesListHeadings{
+.expensesListHeadings{
   display: none;
-} */
+}
 
 #category {
   text-align: center;
