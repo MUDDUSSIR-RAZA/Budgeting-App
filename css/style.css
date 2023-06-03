@@ -361,3 +361,13 @@ transition: all .3s;
   max-width: 100%; 
   word-wrap: break-word; 
 }
+
+.listButtons {
+  display: flex;
+  flex-direction: row;
+  width: 26vw;
+}
+
+.flex {
+  display: flex;
+}
