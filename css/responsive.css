@@ -1,0 +1,67 @@
+@media (max-width: 1410px) {
+    .overview {
+        width: 92vw;
+    }
+
+    .budget {
+        padding: 40px;
+        margin-top: 20vh;
+        width: 15vw;
+        height: 13vw;
+    }
+
+    .total, .expense, .balance {
+        font-size: 20px;
+      }
+}
+
+
+
+@media (max-width: 930px) {
+    .overview {
+        width: 88vw;
+    }
+
+    .budget {
+        padding: 70px;
+    }
+
+    .total, .expense, .balance {
+        font-size: 18px;
+      }
+}
+
+@media (max-width: 590px) {
+    .overview {
+        width: 84vw;
+    }
+
+    .budget {
+        margin-top: 18vh;
+        padding: 90px;
+    }
+}
+
+@media (max-width : 460px) {
+    .overview {
+        width: 81vw;
+    }
+
+    .budget {
+        padding: 120px;
+    }
+
+    .total, .expense, .balance {
+        font-size: 16px;
+      }
+}
+
+@media (max-width : 385px) {
+    .overview {
+        width: 79vw;
+    }
+
+    .budget {
+        padding: 110px;
+    }
+}
