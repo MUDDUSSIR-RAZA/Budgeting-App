@@ -48,6 +48,7 @@ footer {
   border-radius: 20px;
   position: fixed;
   bottom: 5%;
+  border: #181717 solid;
 }
 
 /* .expenseLine,
@@ -155,12 +156,14 @@ main {
   align-items: center;
   align-content: center;
   flex-direction: column;
-  padding: 15px;
+  padding: 25px;
   background: #e0e0e0;
   box-shadow: 0px 5px 15px #bebebe, -2px -1px 15px #fff;
   ;
   border-radius: 10px;
   margin-top: 20vh;
+  width: 15vw;
+  height: 13vw;
 }
 
 .budgetForm {
@@ -174,9 +177,9 @@ main {
 }
 
 .budget p {
-  padding: 12px 0;
+  padding: 25px 0;
   text-align: center;
-  /* margin: 10px; */
+  font-size: 22px;
 }
 
 .budget button {
