@@ -20,6 +20,7 @@
         BUDGETING APP
     </header>
 
+    // Navigation bar with logo and links for budget and expenses.
     <nav class="navbar">
         <div class="logo"><img src="./pics/budget.webp" alt="Logo"></div>
         <ul class="nav-links">
@@ -31,6 +32,8 @@
     <main class="center">
         <div class="container">
 
+            // Container for setting the budget amount with input field and error display, along with a button to set
+            the budget.
             <div class="budget">
                 <form class="budgetForm">
                     <label class="budgetInput">
@@ -41,6 +44,7 @@
                 </form>
                 <button class="budgetbtn" onclick="setBudget()">Set budget</button>
             </div>
+
 
             <div class="expensesAdd">
                 <div onclick="showExpensesList()" class="x">
@@ -76,9 +80,10 @@
                     </label>
                 </form>
                 <button onclick="addExpense()" class="expensesbtn">Add Expense</button>
-
             </div>
 
+            // Container for displaying the expenses list with category, date, and payment columns, along with buttons
+            for adding expenses and deleting all expenses.
             <div class="expensesListHeadings">
                 <table>
                     <tr class="headings">
@@ -104,6 +109,8 @@
                 </div>
             </div>
 
+            // Container for editing expenses with payment details, category, description, and payment date fields,
+            along with an "Update Expense" button.
             <div id="editExpense" class="expensesAdd">
                 <div onclick="showExpensesList()" class="x">
                     X
@@ -122,7 +129,8 @@
                     </label>
                     <p>Enter Category</p>
                     <input type="text" placeholder="Category Name" required maxlength="10" id="editCategoryName">
-                    <p id="editCategoryError" class="error hide">Please enter a valid input. <br> This field cannot be left
+                    <p id="editCategoryError" class="error hide">Please enter a valid input. <br> This field cannot be
+                        left
                         blank.</p>
                     </label>
 
@@ -134,31 +142,35 @@
                     <label class="expensesInput">
                         <p>Enter Payment Date</p>
                         <input type="date" placeholder="Payment Date" id="editPaymentDate">
-                        <p id="editDateError" class="error hide">Date not specified: <br> Kindly provide a valid date.</p>
+                        <p id="editDateError" class="error hide">Date not specified: <br> Kindly provide a valid date.
+                        </p>
                     </label>
                 </form>
                 <button class="expensesbtn" id="editButton">Update Expense</button>
             </div>
 
+            // Container for displaying details of a specific expense, including category, description, payment amount,
+            and payment date.
             <div class="seeDiv">
                 <div class="x" onclick="showExpensesList()">X</div>
                 <h3>Category</h3>
-                <p id="seeCategory" ></p>
+                <p id="seeCategory"></p>
                 <br>
                 <br>
                 <h3>Descriiption</h3>
-                <p id="seeDescriiption" ></p>
+                <p id="seeDescriiption"></p>
                 <br>
                 <br>
                 <h3>Payment</h3>
-                <p id="seePayment" ></p>
+                <p id="seePayment"></p>
                 <br>
                 <br>
                 <h3>Payment Date</h3>
-                <p id="seePaymentDate" ></p>
+                <p id="seePaymentDate"></p>
             </div>
     </main>
 
+    // Container for displaying the overall budget overview, including total budget, expenses, and balance.
     <div class="overview">
         <div class="total">Total Budget
             <div id="totalBudget">
