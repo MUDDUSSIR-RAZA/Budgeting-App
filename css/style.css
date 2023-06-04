@@ -262,7 +262,7 @@ main {
 }
 
 #payment {
-  width: calc(100vw - 60vw);
+  width: calc(100vw - 67vw);
   text-align: center;
   padding: 0px 2vw 0px 7vw;
 }
