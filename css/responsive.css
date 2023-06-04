@@ -57,13 +57,13 @@
 
     .seeDiv {
         width: 35vw;
-      }
+    }
 }
 
 @media (max-width: 700px) {
     .seeDiv {
         width: 50vw;
-      }
+    }
 }
 
 @media (max-width: 590px) {
@@ -76,13 +76,14 @@
         padding: 90px;
     }
 
-    .expensesAdd ,#editExpense{
+    .expensesAdd,
+    #editExpense {
         padding: 8px 9vw 15px 15px;
     }
 
     .seeDiv {
         width: 60vw;
-      }
+    }
 }
 
 @media (max-width : 460px) {
@@ -92,9 +93,10 @@
 
     .budget {
         padding: 120px;
-        margin-top: 10.4vh;
-        
+        margin-top: 10vh;
+
     }
+
     .total,
     .expense,
     .balance {
@@ -121,20 +123,25 @@
     .buttons button {
         padding: 5px;
         margin: 4px;
-      }
+    }
 
-      .expensesAdd ,#editExpense{
+    .expensesAdd,
+    #editExpense {
         padding: 8px 9vw 15px 9px;
         margin-top: 13px;
     }
 
     .x {
         margin-bottom: 5px;
-      }
+    }
 
-      .seeDiv {
+    .seeDiv {
         width: 60vw;
-      }
+    }
+
+    .nav-links li {
+        margin-right: 20px;
+    }
 }
 
 @media (max-width : 385px) {
@@ -158,18 +165,23 @@
         width: calc(100vw - 65.5vw);
         font-size: 11px;
         padding: 0px 2vw 0px 4vw;
-        }
+    }
 
     .buttons button {
         padding: 4px 2px 4px 2px;
         margin: 7px;
-      }
+    }
 
-      .expensesAdd ,#editExpense{
+    .expensesAdd,
+    #editExpense {
         padding: 8px 10vw 15px 15px;
     }
 
     .seeDiv {
         width: 50vw;
-      }
+    }
+
+    .nav-links li {
+        margin-right: 15px;
+    }
 }
