@@ -248,12 +248,18 @@ let addExpense = () => {
     if (expenseAmount <= 0 || !categoryValue || !paymentDateValue) {
         if (expenseAmount <= 0) {
             paymentError.classList.remove("hide")
+        } else {
+            paymentError.classList.add("hide")
         }
         if (!categoryValue) {
             categoryError.classList.remove("hide")
+        } else {
+            paymentError.classList.add("hide")
         }
         if (!paymentDateValue) {
             dateError.classList.remove("hide")
+        } else {
+            paymentError.classList.add("hide")
         }
     } else {
         paymentError.classList.add("hide")
