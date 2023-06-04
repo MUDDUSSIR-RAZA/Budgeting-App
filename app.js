@@ -21,7 +21,6 @@ let totalBudgetAmount = localStorage.getItem("totalExpense") ? parseFloat(localS
 let currentObjEdit = "";
 let currentIndexEdit = "";
 
-
 // Adding an event listener to the editButton element that calls the replaceObject function with the currentObjEdit and currentIndexEdit as arguments when clicked.
 let editButton = document.querySelector("#editButton");
 editButton.addEventListener("click", () => replaceObject(currentObjEdit, currentIndexEdit))
