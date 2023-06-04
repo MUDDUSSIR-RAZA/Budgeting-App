@@ -39,7 +39,7 @@
                     <label class="budgetInput">
                         <p>Budget Amount</p>
                         <input type="text" placeholder="Enter your budget amount" id="budgetAmount">
-                        <p id="budgetError" class="hide error">Input error</p>
+                        <p id="budgetError" class="hide error">Value cannot be empty or negative</p>
                     </label>
                 </form>
                 <button class="budgetbtn" onclick="setBudget()">Set budget</button>
@@ -65,8 +65,7 @@
                     </label>
                     <p>Enter Category</p>
                     <input type="text" placeholder="Category Name" required maxlength="10" id="categoryName">
-                    <p id="categoryError" class="error hide">Please enter a valid input. <br> This field cannot be left
-                        blank.</p>
+                    <p id="categoryError" class="error hide">Please enter a valid input. <br> Values cannot be empty</p>
                     </label>
 
                     <label class="expensesInput">
@@ -130,9 +129,7 @@
                     </label>
                     <p>Enter Category</p>
                     <input type="text" placeholder="Category Name" required maxlength="10" id="editCategoryName">
-                    <p id="editCategoryError" class="error hide">Please enter a valid input. <br> This field cannot be
-                        left
-                        blank.</p>
+                    <p id="editCategoryError" class="error hide">Please enter a valid input. <br> Values cannot be empty.</p>
                     </label>
 
                     <label class="expensesInput">
