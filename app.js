@@ -12,9 +12,12 @@ let editPaymentDate = document.querySelector("#editPaymentDate");
 ////////////////////////////Extra for Random color//////////////////////////////
 const numberRegex = /^[1-9]\d*(\.\d+)?$/;
 
-let expensesArray = [];
+// Retrieve ExpenseValue from local storage if available
+let expensesArray = localStorage.getItem("expenses") ?  JSON.parse(localStorage.getItem("expenses")) : [];
 let totalExpenseValue = 0;
-let totalBudgetAmount = 0;
+
+// Retrieve totalExpenseValue from local storage if available
+let totalBudgetAmount = localStorage.getItem("totalExpense") ? parseFloat(localStorage.getItem("totalExpense")) : 0;
 let currentObjEdit = "";
 let currentIndexEdit = "";
 
@@ -63,10 +66,12 @@ let showSeeDiv = () => {
     seeDiv.style.display = "block";
 }
 
+
 // Resetting the expensesArray to an empty array and then refreshing the displayed expenses and balance.
 let deleteAll = () => {
     expensesArray = [];
     displayExpenses();
+    saveExpensesToLocalStorage();
     refreshBalance();
 }
 
@@ -74,6 +79,7 @@ let deleteAll = () => {
 let deleteTable = (indexToDelete) => {
     expensesArray.splice(indexToDelete, 1);
     displayExpenses();
+    saveExpensesToLocalStorage();
     refreshBalance();
 }
 
@@ -90,7 +96,7 @@ let seeTable = (obj) => {
     seePaymentDate.innerText = "";
     seeCategory.innerText = obj.category;
     seeDescriiption.innerText = obj.description;
-    seePayment.innerText =`Rs ${obj.payment}`;
+    seePayment.innerText = `Rs ${obj.payment}`;
     seePaymentDate.innerText = obj.paymentDate;
 }
 
@@ -127,6 +133,7 @@ let replaceObject = (obj, index) => {
         expensesArray[index] = obj;
         refreshBalance();
         displayExpenses();
+        saveExpensesToLocalStorage();
         showExpensesList();
     }
 }
@@ -155,8 +162,8 @@ let refreshBalance = () => {
     totalExpenseValue = 0;
     expensesArray.forEach((object) => {
         totalExpenseValue += +object.payment;
-
     })
+    totalBudget.innerText = totalBudgetAmount;
     totalExpense.innerText = "";
     totalExpense.innerText = `Rs ${totalExpenseValue}`;
     balanceAmount.innerText = "";
@@ -265,6 +272,7 @@ let setBudget = () => {
         totalBudgetAmount = 0;
         totalBudgetAmount = +budgetAmount.value;
         budgetAmount.value = "";
+        saveTotalExpensesToLocalStorage();
         totalBudget.innerText = `Rs ${totalBudgetAmount}`;
         refreshBalance();
     }
@@ -312,5 +320,29 @@ let addExpense = () => {
         description.value = "";
         paymentDate.value = "";
         showExpensesList();
+        saveExpensesToLocalStorage();
     }
+}
+
+// Retrieve ExpensesValue from local storage if available
+if (localStorage.getItem("expenses")) {
+    displayExpenses();
+    refreshBalance();
+}
+
+// Function to save the expenses array to local storage
+let saveExpensesToLocalStorage = () => {
+    localStorage.setItem("expenses", JSON.stringify(expensesArray));
+}
+
+// Retrieve totalExpenseValue from local storage if available
+if (localStorage.getItem("totalExpense")) {
+    displayExpenses();
+    showExpensesList();
+    refreshBalance();
+}
+
+// Function to save the Total Budget Amount to local storage
+let saveTotalExpensesToLocalStorage = () => {
+    localStorage.setItem("totalExpense", totalBudgetAmount.toString());
 }
