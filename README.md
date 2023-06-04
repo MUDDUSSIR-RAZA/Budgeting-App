@@ -26,6 +26,7 @@ To use the budget tracker, follow these steps:
 6- To edit an expense, make the necessary changes in the edit form and click the "Edit Expense" button. Validation will be performed to ensure that the payment amount is greater than zero and that the category and payment date are provided.
 7- To delete all expenses and reset the budget, click the "Delete All" button. This action cannot be undone.
 
+
 ## Design
 The budget tracker has a simple and intuitive design. It uses a color scheme of orange and black. The font "Orbitron" is used for a modern look. The expenses are displayed in a table format with buttons for actions such as viewing, editing, and deleting. Random background colors are assigned to each expense table for visual variety.
 
