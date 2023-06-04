@@ -90,7 +90,7 @@ let seeTable = (obj) => {
     seePaymentDate.innerText = "";
     seeCategory.innerText = obj.category;
     seeDescriiption.innerText = obj.description;
-    seePayment.innerText = obj.payment;
+    seePayment.innerText =`Rs ${obj.payment}`;
     seePaymentDate.innerText = obj.paymentDate;
 }
 
