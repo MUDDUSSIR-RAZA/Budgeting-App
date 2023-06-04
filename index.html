@@ -20,7 +20,7 @@
         BUDGETING APP
     </header>
 
-    // Navigation bar with logo and links for budget and expenses.
+    <!-- Navigation bar with logo and links for budget and expenses. -->
     <nav class="navbar">
         <div class="logo"><img src="./pics/budget.webp" alt="Logo"></div>
         <ul class="nav-links">
@@ -32,8 +32,8 @@
     <main class="center">
         <div class="container">
 
-            // Container for setting the budget amount with input field and error display, along with a button to set
-            the budget.
+            <!-- Container for setting the budget amount with input field and error display, along with a button to set
+            the budget. -->
             <div class="budget">
                 <form class="budgetForm">
                     <label class="budgetInput">
@@ -46,6 +46,7 @@
             </div>
 
 
+            <!-- Form for adding expenses with input fields for payment, category, description, and payment date -->
             <div class="expensesAdd">
                 <div onclick="showExpensesList()" class="x">
                     X
@@ -82,8 +83,8 @@
                 <button onclick="addExpense()" class="expensesbtn">Add Expense</button>
             </div>
 
-            // Container for displaying the expenses list with category, date, and payment columns, along with buttons
-            for adding expenses and deleting all expenses.
+            <!-- Container for displaying the expenses list with category, date, and payment columns, along with buttons
+            for adding expenses and deleting all expenses. -->
             <div class="expensesListHeadings">
                 <table>
                     <tr class="headings">
@@ -109,8 +110,8 @@
                 </div>
             </div>
 
-            // Container for editing expenses with payment details, category, description, and payment date fields,
-            along with an "Update Expense" button.
+            <!-- Container for editing expenses with payment details, category, description, and payment date fields,
+            along with an "Update Expense" button. -->
             <div id="editExpense" class="expensesAdd">
                 <div onclick="showExpensesList()" class="x">
                     X
@@ -149,8 +150,8 @@
                 <button class="expensesbtn" id="editButton">Update Expense</button>
             </div>
 
-            // Container for displaying details of a specific expense, including category, description, payment amount,
-            and payment date.
+            <!-- Container for displaying details of a specific expense, including category, description, payment amount,
+            and payment date. -->
             <div class="seeDiv">
                 <div class="x" onclick="showExpensesList()">X</div>
                 <h3>Category</h3>
@@ -170,7 +171,7 @@
             </div>
     </main>
 
-    // Container for displaying the overall budget overview, including total budget, expenses, and balance.
+    <!-- Container for displaying the overall budget overview, including total budget, expenses, and balance. -->
     <div class="overview">
         <div class="total">Total Budget
             <div id="totalBudget">
