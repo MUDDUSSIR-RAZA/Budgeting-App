@@ -58,6 +58,10 @@
     .seeDiv {
         width: 35vw;
     }
+
+    .container {
+        width: 90%;
+    }
 }
 
 @media (max-width: 700px) {
