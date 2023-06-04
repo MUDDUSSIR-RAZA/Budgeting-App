@@ -18,6 +18,8 @@ let totalBudgetAmount = 0;
 let currentObjEdit = "";
 let currentIndexEdit = "";
 
+
+// Adding an event listener to the editButton element that calls the replaceObject function with the currentObjEdit and currentIndexEdit as arguments when clicked.
 let editButton = document.querySelector("#editButton");
 editButton.addEventListener("click", () => replaceObject(currentObjEdit, currentIndexEdit))
 
@@ -61,18 +63,21 @@ let showSeeDiv = () => {
     seeDiv.style.display = "block";
 }
 
+// Resetting the expensesArray to an empty array and then refreshing the displayed expenses and balance.
 let deleteAll = () => {
     expensesArray = [];
     displayExpenses();
     refreshBalance();
 }
 
+// Function to delete the expense object at the specified index from the expensesArray, and then refresh the displayed expenses and balance.
 let deleteTable = (indexToDelete) => {
     expensesArray.splice(indexToDelete, 1);
     displayExpenses();
     refreshBalance();
 }
 
+// Function to display the details of the selected expense object in a separate "See" section
 let seeTable = (obj) => {
     showSeeDiv();
     let seeCategory = document.querySelector("#seeCategory");
@@ -89,17 +94,44 @@ let seeTable = (obj) => {
     seePaymentDate.innerText = obj.paymentDate;
 }
 
+// Function to update the values of the selected expense object with the edited values from the form, and refresh the balance, display expenses, and show the expenses list.
 let replaceObject = (obj, index) => {
-    obj.payment = editPaymentAmount.value;
-    obj.category = editCategoryName.value;
-    obj.description = editDescription.value;
-    obj.paymentDate = editPaymentDate.value;
-    expensesArray[index] = obj;
-    refreshBalance();
-    displayExpenses();
-    showExpensesList();
+    let editPaymentError = document.querySelector("#editPaymentError");
+    let editCategoryError = document.querySelector("#editCategoryError");
+    let editDateError = document.querySelector("#editDateError");
+    let editPaymentAmountValue = editPaymentAmount.value;
+    let editCategoryNameValue = editCategoryName.value;
+    let editDescriptionValue = editDescription.value;
+    let editPaymentDateValue = editPaymentDate.value;
+    if (editPaymentAmountValue <= 0 || !editCategoryNameValue || !editPaymentDateValue) {
+        if (editPaymentAmountValue <= 0) {
+            editPaymentError.classList.remove("hide")
+        } else {
+            editPaymentError.classList.add("hide")
+        }
+        if (!editCategoryNameValue) {
+            editCategoryError.classList.remove("hide")
+        } else {
+            editCategoryError.classList.add("hide")
+        }
+        if (!editPaymentDateValue) {
+            editDateError.classList.remove("hide")
+        } else {
+            editDateError.classList.add("hide")
+        }
+    } else {
+        obj.payment = editPaymentAmountValue;
+        obj.category = editCategoryNameValue;
+        obj.description = editDescriptionValue;
+        obj.paymentDate = editPaymentDateValue;
+        expensesArray[index] = obj;
+        refreshBalance();
+        displayExpenses();
+        showExpensesList();
+    }
 }
 
+// Function to populate the edit form with the details of the selected expense object and show the expenses edit section.
 let editTable = (obj, index) => {
     showExpensesEdit();
     editPaymentAmount.value = "";
@@ -116,25 +148,7 @@ let editTable = (obj, index) => {
     currentIndexEdit = index;
 }
 
-let setBudget = () => {
-    let totalBudget = document.querySelector("#totalBudget");
-    let budgetAmount = document.querySelector("#budgetAmount");
-    let budgetError = document.querySelector("#budgetError");
-    if (budgetAmount.value < 0 || !budgetAmount.value || !numberRegex.test(budgetAmount.value)) {
-        budgetError.classList.remove("hide");
-    } else {
-        totalExpense.value = totalExpenseValue;
-        budgetError.classList.add("hide");
-        showExpensesList();
-        totalBudget.innerText = "";
-        totalBudgetAmount = 0;
-        totalBudgetAmount = +budgetAmount.value;
-        budgetAmount.value = "";
-        totalBudget.innerText = `Rs ${totalBudgetAmount}`;
-        refreshBalance();
-    }
-}
-
+// Function to refresh the balance amount by calculating the total expenses and updating the balance displayed on the page. It also checks for budget emergencies or alarms based on the remaining funds.
 let refreshBalance = () => {
     let balanceAmount = document.querySelector("#balanceAmount");
     let balance = document.querySelector(".balance");
@@ -159,6 +173,7 @@ let refreshBalance = () => {
     }
 }
 
+// Function to create an expense object with the provided details and add it to the expensesArray.
 let makeobject = (expenseAmount, categoryValue, descriptionValue, paymentDateValue) => {
     const object = {
         payment: expenseAmount,
@@ -169,6 +184,8 @@ let makeobject = (expenseAmount, categoryValue, descriptionValue, paymentDateVal
     expensesArray.push(object)
 }
 
+
+// Function to display the expenses list by creating table rows for each expense object and adding event listeners for see, edit, and delete buttons.
 let displayExpenses = () => {
     let expensesList = document.querySelector(".expensesList");
     expensesList.innerHTML = "";
@@ -233,6 +250,27 @@ let displayExpenses = () => {
     })
 }
 
+// Function to set the budget and perform validations before updating the total budget amount.
+let setBudget = () => {
+    let totalBudget = document.querySelector("#totalBudget");
+    let budgetAmount = document.querySelector("#budgetAmount");
+    let budgetError = document.querySelector("#budgetError");
+    if (budgetAmount.value < 0 || !budgetAmount.value || !numberRegex.test(budgetAmount.value)) {
+        budgetError.classList.remove("hide");
+    } else {
+        totalExpense.value = totalExpenseValue;
+        budgetError.classList.add("hide");
+        showExpensesList();
+        totalBudget.innerText = "";
+        totalBudgetAmount = 0;
+        totalBudgetAmount = +budgetAmount.value;
+        budgetAmount.value = "";
+        totalBudget.innerText = `Rs ${totalBudgetAmount}`;
+        refreshBalance();
+    }
+}
+
+// Function to add an expense and perform validations before adding it to the list.
 let addExpense = () => {
     let paymentAmount = document.querySelector("#paymentAmount");
     let categoryName = document.querySelector("#categoryName");
@@ -254,12 +292,12 @@ let addExpense = () => {
         if (!categoryValue) {
             categoryError.classList.remove("hide")
         } else {
-            paymentError.classList.add("hide")
+            categoryError.classList.add("hide")
         }
         if (!paymentDateValue) {
             dateError.classList.remove("hide")
         } else {
-            paymentError.classList.add("hide")
+            dateError.classList.add("hide")
         }
     } else {
         paymentError.classList.add("hide")
