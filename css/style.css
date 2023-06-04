@@ -86,10 +86,7 @@ footer {
   padding: 10px;
   background-color: #f0f0f0;
   margin-top: 6vh;
-  /* Adjust this value to match the header height */
   margin-bottom: 5vh;
-  /* Adjust this value to match the footer height */
-  padding: 10px;
 }
 
 .logo {
