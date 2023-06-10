@@ -162,7 +162,7 @@ let refreshBalance = () => {
     expensesArray.forEach((object) => {
         totalExpenseValue += +object.payment;
     })
-    totalBudget.innerText = totalBudgetAmount;
+    totalBudget.innerText = `Rs ${totalBudgetAmount}`;
     totalExpense.innerText = "";
     totalExpense.innerText = `Rs ${totalExpenseValue}`;
     balanceAmount.innerText = "";
